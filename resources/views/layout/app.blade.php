@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ asset('argon/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
         <link rel="stylesheet" href="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-        <script src="{{ asset('fullcalendar/dist/index.global.min.js') }}"></script>
+        <script src="{{ asset('fullcalendar/dist/index.global.js') }}"></script>
     </head>
 
     <style type="text/css">
@@ -102,7 +102,7 @@
                                         </div>
                                     </div>
                                 </a>
-                                @include('jawaban.NomorSatu.index')
+                                @include('jawaban.NomorSatu.login')
                             </li>
                         </ul>
                     </div>
@@ -140,7 +140,7 @@
         <script src="{{ asset('argon/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"> </script>
 
         @yield('addon-script')
-        
+
     </body>
 
 </html>

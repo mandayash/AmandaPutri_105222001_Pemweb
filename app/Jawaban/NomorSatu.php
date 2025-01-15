@@ -9,15 +9,30 @@ class NomorSatu {
 
 	public function auth (Request $request) {
 
-		// Tuliskan code untuk proses login dengan menggunakan email/username dan password
+		$credentials = $request->only('email', 'password');
+        $loginField = filter_var($credentials['email'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-		return redirect()->route('event.home');
+        $loginCredentials = [
+            $loginField => $credentials['email'],
+            'password' => $credentials['password']
+        ];
+
+        if (Auth::attempt($loginCredentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('event.home');
+        }
+
+		return redirect()->back()->withErrors([
+            'email' => 'Data Anda tidak sesuai'
+        ]);
 	}
 
 	public function logout (Request $request) {
 
-		// Tuliskan code untuk menangani proses logout
-        
+		Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect()->route('event.home');
 	}
 }

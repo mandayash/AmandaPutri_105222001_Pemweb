@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('name');
-            $table->date('start'); 
-            $table->date('end');
+            $table->string('event');
+            $table->datetime('start');
+            $table->datetime('end');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
